@@ -13,13 +13,20 @@ public class Puzzle : MonoBehaviour,IDragHandler, IEndDragHandler, IBeginDragHan
 
     [SerializeField] bool completeFlag = false; //블록이 그리드위에 올라갔다면 true 아니면 false
 
+    GameManager theGM;
+
+    [SerializeField] GameObject onGameObj; //다른 블록 위에 있는지 검사
+
+
     private void Start()
     {
         parentSpawner = transform.parent.gameObject;
+        theGM = FindObjectOfType<GameManager>();
     }
 
     public void OnBeginDrag(PointerEventData eventData){
         this.GetComponent<RectTransform>().sizeDelta = new Vector2(100f,100f);
+        onGameObj = null;
     }
 
     public void OnDrag(PointerEventData eventData){
@@ -31,15 +38,24 @@ public class Puzzle : MonoBehaviour,IDragHandler, IEndDragHandler, IBeginDragHan
     }
     public void OnEndDrag(PointerEventData eventData){
         if(gridList.Count > 0){ //한가지 경우와 두가지 이상일 경우는 같은 연산을 해야되기때문에 합쳤음.
-            Vector3 nextPos = gridList[0].transform.position;
-            for(int i = 0; i < gridList.Count; i++) {
-                if(Vector3.Distance(transform.position, nextPos) > Vector3.Distance(transform.position, gridList[i].transform.position)){
-                    nextPos = gridList[i].transform.position;
-                }
+            if(onGameObj != null){
+                this.GetComponent<RectTransform>().sizeDelta = new Vector2(160f,160f);
+                transform.position = parentSpawner.transform.position;
             }
-            transform.position = nextPos;
-            parentSpawner = null;
-            completeFlag = true;
+            else{
+                Vector3 nextPos = gridList[0].transform.position;
+                for(int i = 0; i < gridList.Count; i++) {
+                    if(Vector3.Distance(transform.position, nextPos) > Vector3.Distance(transform.position, gridList[i].transform.position)){
+                        nextPos = gridList[i].transform.position;
+                    }
+                }
+                transform.position = nextPos; //가장 가까운 그리드로 위치 이동
+                gridList[0].gameObject.tag = "OnGrid";
+                parentSpawner = null;
+                completeFlag = true;
+                this.gameObject.transform.parent = theGM.puzzlePlacementGroup.transform;
+            }
+            
         }
         else{
             this.GetComponent<RectTransform>().sizeDelta = new Vector2(160f,160f);
@@ -58,9 +74,6 @@ public class Puzzle : MonoBehaviour,IDragHandler, IEndDragHandler, IBeginDragHan
         if(other.transform.tag == "Grid"){
             print("exit");
             gridList.Remove(other.gameObject);
-        }
-        if(other.transform.tag == "Spawner"){ //spawner에서 나갈때 크기 및 블록 모양을 조정해야함...!
-            
         }
     }
     

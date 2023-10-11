@@ -6,6 +6,7 @@ using System;
 [System.Serializable]
 public class Unit
 {
+    
     [SerializeField] float time;
     [SerializeField] int unitCode;
     
