@@ -19,6 +19,9 @@ public class GridScript : MonoBehaviour
     private void OnTriggerExit2D(Collider2D other) {
         col.color = new Color(col.color.r, col.color.g, col.color.b, 0.5f);
         print("recovery");
+        // if(other.tag == "Puzzle"){
+        //     this.tag = "Grid";
+        // }
     }
 
 }
