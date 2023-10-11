@@ -8,6 +8,7 @@ public class Puzzle : MonoBehaviour,IDragHandler, IEndDragHandler, IBeginDragHan
     [SerializeField] Unit unit;
 
     [SerializeField] GameObject parentSpawner;
+    [SerializeField] GameObject unitTimer;
 
     public List<GameObject> gridList = new List<GameObject>();
 
@@ -23,6 +24,14 @@ public class Puzzle : MonoBehaviour,IDragHandler, IEndDragHandler, IBeginDragHan
         parentSpawner = transform.parent.gameObject;
         theGM = FindObjectOfType<GameManager>();
     }
+
+    private void Update()
+    {
+        if(completeFlag){
+
+        }
+    }
+
 
     public void OnBeginDrag(PointerEventData eventData){
         this.GetComponent<RectTransform>().sizeDelta = new Vector2(100f,100f);
@@ -52,6 +61,10 @@ public class Puzzle : MonoBehaviour,IDragHandler, IEndDragHandler, IBeginDragHan
                 transform.position = nextPos; //가장 가까운 그리드로 위치 이동
                 gridList[0].gameObject.tag = "OnGrid";
                 parentSpawner = null;
+                //unitList에 생성
+                var unittimer = Instantiate(unitTimer,theGM.UnitListGroup.transform.position,Quaternion.identity,theGM.UnitListGroup.transform);
+                //unittimer 객체는 현재 퍼즐 객체와 같이 삭제되어야 하니 parentObj를 현재 객체로 설정
+                unittimer.GetComponent<UnitListScript>().parentObj = this.gameObject;
                 completeFlag = true;
                 this.gameObject.transform.parent = theGM.puzzlePlacementGroup.transform;
             }
@@ -76,5 +89,5 @@ public class Puzzle : MonoBehaviour,IDragHandler, IEndDragHandler, IBeginDragHan
             gridList.Remove(other.gameObject);
         }
     }
-    
+
 }

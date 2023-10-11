@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2817131901352369667}
   - component: {fileID: 2817131901352369666}
   m_Layer: 5
-  m_Name: Puzzle (4)
+  m_Name: Puzzle
   m_TagString: Puzzle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -95,6 +95,7 @@ MonoBehaviour:
     time: 0
     unitCode: 0
   parentSpawner: {fileID: 0}
+  unitTimer: {fileID: 5554322655738236717, guid: b9997cc464e3c4db88a5c77fb9dd1dd2, type: 3}
   gridList: []
   completeFlag: 0
   onGameObj: {fileID: 0}

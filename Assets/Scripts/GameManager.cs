@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public GameObject puzzlePlacementGroup;
+    public GameObject UnitListGroup;
 
     // Start is called before the first frame update
     void Start()

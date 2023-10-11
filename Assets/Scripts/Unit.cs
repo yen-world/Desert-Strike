@@ -7,7 +7,7 @@ using System;
 public class Unit
 {
     
-    [SerializeField] float time;
-    [SerializeField] int unitCode;
+    public float time;
+    public int unitCode;
     
 }
