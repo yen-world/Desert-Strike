@@ -14,7 +14,7 @@ public class PuzzleGroupScript : MonoBehaviour, IDragHandler,IBeginDragHandler, 
     public List<GameObject> gridGroup = new List<GameObject>();
     public List<Block> blocks = new List<Block>();
 
-    [SerializeField] GameObject thisParent;
+    [SerializeField] GameObject thisParent; //PuzzleSpawnPos
     [SerializeField] GameObject blocksObj;
     [SerializeField] GameObject blockInfoImg;
 
@@ -69,6 +69,7 @@ public class PuzzleGroupScript : MonoBehaviour, IDragHandler,IBeginDragHandler, 
                 var unitlist = Instantiate(unitListPrefab, unitListParent.transform.position, 
                 Quaternion.identity, unitListParent.transform);
                 unitlist.GetComponent<UnitListScript>().parentObj = this.gameObject;
+                thisParent.GetComponent<SpawnerScript>().spawnTimerFlag = true;
             }
         }catch(ArgumentOutOfRangeException){//블록이 현재 제자리에 없는경우임. 이럴땐 스폰 위치로 다시 이동시켜야함.
             

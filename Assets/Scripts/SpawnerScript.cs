@@ -9,14 +9,12 @@ public class SpawnerScript : MonoBehaviour
     [SerializeField] Text timeText;
     [SerializeField] GameObject puzzlePrefab;
 
+    public bool spawnTimerFlag = false;
 
     // Update is called once per frame
     void Update()
     {
-        if(this.transform.childCount > 1){
-            timeSlider.gameObject.SetActive(false);
-        }
-        else{
+        if(spawnTimerFlag){
             timeSlider.gameObject.SetActive(true);
             // StartCoroutine(TimeCoroutine());
             timeSlider.value -= 0.001f;
@@ -26,7 +24,11 @@ public class SpawnerScript : MonoBehaviour
                 Instantiate(puzzlePrefab, this.transform.position, Quaternion.identity, this.transform);
                 timeSlider.gameObject.SetActive(false);
                 timeSlider.value = 3f;
+                spawnTimerFlag = false;
             }
+        }
+        else{
+            timeSlider.gameObject.SetActive(false);
         }
     }
 }
