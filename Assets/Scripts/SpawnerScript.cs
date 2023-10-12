@@ -9,6 +9,7 @@ public class SpawnerScript : MonoBehaviour
     [SerializeField] Text timeText;
     [SerializeField] GameObject puzzlePrefab;
 
+
     // Update is called once per frame
     void Update()
     {
@@ -28,10 +29,5 @@ public class SpawnerScript : MonoBehaviour
             }
         }
     }
-
-    // IEnumerator TimeCoroutine(){
-        
-    //     yield return new WaitForSeconds(0.1f);
-    // }
 }
 

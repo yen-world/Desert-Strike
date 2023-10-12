@@ -7,6 +7,7 @@ public class UnitListScript : MonoBehaviour
     [SerializeField] Slider unitTimer;
     [SerializeField] bool myCoroutineRunning;
     public GameObject parentObj;
+    public List<GameObject> gridGroup;
 
     GameManager theGM;
     // Start is called before the first frame update
@@ -20,6 +21,9 @@ public class UnitListScript : MonoBehaviour
     void Update()
     {
         if(!myCoroutineRunning){
+            for(int i = 0; i < gridGroup.Count; i++) {
+                gridGroup[i].gameObject.tag = "Grid";   
+            }
             Destroy(parentObj);
             Destroy(this.gameObject);
         }

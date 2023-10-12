@@ -65,6 +65,7 @@ public class Puzzle : MonoBehaviour,IDragHandler, IEndDragHandler, IBeginDragHan
                 var unittimer = Instantiate(unitTimer,theGM.UnitListGroup.transform.position,Quaternion.identity,theGM.UnitListGroup.transform);
                 //unittimer 객체는 현재 퍼즐 객체와 같이 삭제되어야 하니 parentObj를 현재 객체로 설정
                 unittimer.GetComponent<UnitListScript>().parentObj = this.gameObject;
+                // unittimer.GetComponent<UnitListScript>().gridGroup.Add(nextPos); //블록이 들어갔던 자리는 Grid로 테그가 바껴야함.
                 completeFlag = true;
                 this.gameObject.transform.parent = theGM.puzzlePlacementGroup.transform;
             }

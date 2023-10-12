@@ -7,15 +7,10 @@ public class GameManager : MonoBehaviour
     public GameObject puzzlePlacementGroup;
     public GameObject UnitListGroup;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public List<GameObject> shapeList = new List<GameObject>();
 
-    // Update is called once per frame
-    void Update()
-    {
+    public GameObject SetShape(int _code){
         
+        return shapeList[0];
     }
 }
