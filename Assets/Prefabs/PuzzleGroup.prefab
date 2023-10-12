@@ -291,7 +291,9 @@ MonoBehaviour:
   thisParent: {fileID: 0}
   blocksObj: {fileID: 0}
   blockInfoImg: {fileID: 7567766136532089923}
+  unitListPrefab: {fileID: 5554322655738236717, guid: b9997cc464e3c4db88a5c77fb9dd1dd2, type: 3}
   blockShapeCode: 0
+  completeFlag: 0
 --- !u!61 &7567766137507172507
 BoxCollider2D:
   m_ObjectHideFlags: 0

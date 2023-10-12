@@ -12,13 +12,17 @@ public class PuzzleGroupScript : MonoBehaviour, IDragHandler,IBeginDragHandler, 
     //가져온 그리드를 조회해야한다. 즉 그리드에 번호가 있으면 편할듯하다...
 
     public List<GameObject> gridGroup = new List<GameObject>();
-    [SerializeField] List<Block> blocks = new List<Block>();
+    public List<Block> blocks = new List<Block>();
 
     [SerializeField] GameObject thisParent;
     [SerializeField] GameObject blocksObj;
     [SerializeField] GameObject blockInfoImg;
+
+    [SerializeField] GameObject unitListPrefab;
+    [SerializeField] GameObject unitListParent;
  
     [SerializeField] int blockShapeCode;
+    [SerializeField] bool completeFlag = false;
     GameManager theGM;
     // Start is called before the first frame update
     void Start()
@@ -32,9 +36,9 @@ public class PuzzleGroupScript : MonoBehaviour, IDragHandler,IBeginDragHandler, 
             blocks.Add(blocksObj.transform.GetChild(i).GetComponent<Block>());
         }
         blocksObj.SetActive(false);
+        unitListParent = GameObject.Find("UnitListGroup");
     }
 
-    // Update is called once per frame
     public void OnBeginDrag(PointerEventData eventData){
         //블록 모양으로 변환
         //일단 잘못 놨을수도 있으니 블록 그리드를 모두 지워야함.
@@ -43,14 +47,16 @@ public class PuzzleGroupScript : MonoBehaviour, IDragHandler,IBeginDragHandler, 
         gridGroup.Clear();
     }
     public void OnDrag(PointerEventData eventData1){
-        Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y,0f);
-        Vector3 objectPos = Camera.main.ScreenToWorldPoint(mousePos);
-        transform.position = new Vector3(objectPos.x, objectPos.y, 0f);
+        if(!completeFlag){
+            Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y,0f);
+            Vector3 objectPos = Camera.main.ScreenToWorldPoint(mousePos);
+            transform.position = new Vector3(objectPos.x, objectPos.y, 0f);
+        }
     }
     public void OnEndDrag(PointerEventData eventData2){
         try{
             //그리드 정보 여기로 불러와야됨.
-            //지금 두개만 붙는 현상만 고치면 얼추 될듯?
+
             for(int i = 0; i < blocks.Count; i++) {
                 gridGroup.Add(blocks[i].gridList[0]);
             }
@@ -58,6 +64,11 @@ public class PuzzleGroupScript : MonoBehaviour, IDragHandler,IBeginDragHandler, 
                 for(int i = 0; i < blocks.Count; i++) {
                     blocks[i].completeFlag = true;
                 }
+                completeFlag = true;
+                //유닛 리스트에 추가하는 함수
+                var unitlist = Instantiate(unitListPrefab, unitListParent.transform.position, 
+                Quaternion.identity, unitListParent.transform);
+                unitlist.GetComponent<UnitListScript>().parentObj = this.gameObject;
             }
         }catch(ArgumentOutOfRangeException){//블록이 현재 제자리에 없는경우임. 이럴땐 스폰 위치로 다시 이동시켜야함.
             

@@ -11,6 +11,6 @@ public class GameManager : MonoBehaviour
 
     public GameObject SetShape(int _code){
         
-        return shapeList[0];
+        return shapeList[_code];
     }
 }

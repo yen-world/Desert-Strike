@@ -15,6 +15,7 @@ public class UnitListScript : MonoBehaviour
     {
         StartCoroutine(UnitTimer());
         theGM = FindObjectOfType<GameManager>();
+        gridGroup = parentObj.GetComponent<PuzzleGroupScript>().gridGroup;
     }
 
     // Update is called once per frame
