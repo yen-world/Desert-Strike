@@ -11,6 +11,8 @@ public class PuzzleGroupScript : MonoBehaviour, IDragHandler,IBeginDragHandler, 
     //퍼즐 그룹은 그리드를 가져온다.
     //가져온 그리드를 조회해야한다. 즉 그리드에 번호가 있으면 편할듯하다...
 
+    public int unit_Code;
+
     public List<GameObject> gridGroup = new List<GameObject>();
     public List<Block> blocks = new List<Block>();
 
@@ -37,6 +39,7 @@ public class PuzzleGroupScript : MonoBehaviour, IDragHandler,IBeginDragHandler, 
         }
         blocksObj.SetActive(false);
         unitListParent = GameObject.Find("UnitListGroup");
+        unit_Code = UnityEngine.Random.Range(1001,1008);
     }
 
     public void OnBeginDrag(PointerEventData eventData){
@@ -70,6 +73,8 @@ public class PuzzleGroupScript : MonoBehaviour, IDragHandler,IBeginDragHandler, 
                 Quaternion.identity, unitListParent.transform);
                 unitlist.GetComponent<UnitListScript>().parentObj = this.gameObject;
                 thisParent.GetComponent<SpawnerScript>().spawnTimerFlag = true;
+
+                //유닛 리스트에 추가된 프리팹의 유닛 설정 (이건 게임메니저에서 불러오는게 나을듯...)
             }
         }catch(ArgumentOutOfRangeException){//블록이 현재 제자리에 없는경우임. 이럴땐 스폰 위치로 다시 이동시켜야함.
             
