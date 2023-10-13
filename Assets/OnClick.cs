@@ -5,6 +5,9 @@ using UnityEngine;
 public class OnClick : MonoBehaviour
 {
     public GameObject SquadUI;
+
+    public GameObject UnitUI;
+
     // 스크롤뷰의 위치를 초기화하기 위한 변수
     public RectTransform ScrollContent;
 
@@ -28,5 +31,10 @@ public class OnClick : MonoBehaviour
 
         // UI창 활성화
         SquadUI.SetActive(true);
+    }
+
+    public void UnitUIOpen()
+    {
+        UnitUI.SetActive(true);
     }
 }
