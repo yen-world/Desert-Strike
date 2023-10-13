@@ -286,14 +286,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97097590162d84f3aaf582034a8d3e02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unit_Code: 0
   gridGroup: []
   blocks: []
   thisParent: {fileID: 0}
   blocksObj: {fileID: 0}
   blockInfoImg: {fileID: 7567766136532089923}
   unitListPrefab: {fileID: 5554322655738236717, guid: b9997cc464e3c4db88a5c77fb9dd1dd2, type: 3}
+  unitListParent: {fileID: 0}
   blockShapeCode: 0
   completeFlag: 0
+  blockShapeImg: {fileID: 3335069060128273540}
 --- !u!61 &7567766137507172507
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -26,6 +26,10 @@ public class PuzzleGroupScript : MonoBehaviour, IDragHandler,IBeginDragHandler, 
     [SerializeField] int blockShapeCode;
     [SerializeField] bool completeFlag = false;
     GameManager theGM;
+
+    [Header("PuzzleImg")]
+    [SerializeField] Image blockShapeImg;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +44,7 @@ public class PuzzleGroupScript : MonoBehaviour, IDragHandler,IBeginDragHandler, 
         blocksObj.SetActive(false);
         unitListParent = GameObject.Find("UnitListGroup");
         unit_Code = UnityEngine.Random.Range(1001,1008);
+        blockShapeImg.sprite = theGM.blockImg.Find(x => x.name == "B300" + blockShapeCode.ToString());
     }
 
     public void OnBeginDrag(PointerEventData eventData){

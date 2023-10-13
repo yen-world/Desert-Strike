@@ -3478,6 +3478,12 @@ MonoBehaviour:
   - {fileID: 4654332069157388535, guid: cf25951aa75ba4197b962468fb3c72f2, type: 3}
   - {fileID: 4654332069157388535, guid: f2564d9a2b64a4528a0ddf5a032b20b2, type: 3}
   - {fileID: 4654332069157388535, guid: 0ad1a0b07d587451a8c59eebd4e89cd2, type: 3}
+  blockImg:
+  - {fileID: 21300000, guid: dcb455263be6d4dcfa0e3651428390c6, type: 3}
+  - {fileID: 21300000, guid: 577d4974b2d274917ab26d48d578f65c, type: 3}
+  - {fileID: 21300000, guid: eb890ba57e523429688661e6103052e5, type: 3}
+  - {fileID: 21300000, guid: a22f0c13dab8b44e7a8edfdd39abeeef, type: 3}
+  - {fileID: 21300000, guid: 5369d685b9cf84a949f6d03d25df7da5, type: 3}
 --- !u!4 &421362108
 Transform:
   m_ObjectHideFlags: 0

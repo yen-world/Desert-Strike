@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
 
     public List<GameObject> unitPrefabs = new List<GameObject>();
 
+    public List<Sprite> blockImg = new List<Sprite>();
+
     public GameObject SetShape(int _code){
         
         return shapeList[_code];
