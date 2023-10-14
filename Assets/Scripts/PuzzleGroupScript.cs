@@ -44,7 +44,7 @@ public class PuzzleGroupScript : MonoBehaviour, IDragHandler,IBeginDragHandler, 
         blocksObj.SetActive(false);
         unitListParent = GameObject.Find("UnitListGroup");
         unit_Code = UnityEngine.Random.Range(1001,1008);
-        blockShapeImg.sprite = theGM.blockImg.Find(x => x.name == "B300" + blockShapeCode.ToString());
+        blockShapeImg.sprite = theGM.blockImg.Find(x => x.name == "B300" + (blockShapeCode+1).ToString());
     }
 
     public void OnBeginDrag(PointerEventData eventData){
