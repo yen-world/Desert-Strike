@@ -73,7 +73,7 @@ public class PuzzleGroupScript : MonoBehaviour, IDragHandler,IBeginDragHandler, 
                     blocks[i].completeFlag = true;
                 }
                 completeFlag = true;
-                //유닛 리스트에 추가하는 함수
+                //유닛 리스트에 추가하는 함수 
                 var unitlist = Instantiate(unitListPrefab, unitListParent.transform.position, 
                 Quaternion.identity, unitListParent.transform);
                 unitlist.GetComponent<UnitListScript>().parentObj = this.gameObject;
