@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MinimapScript : MonoBehaviour
-{
+{   
+    public LayerMask onUIlayer, notUIlayer;
+    [SerializeField] bool flag = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +16,16 @@ public class MinimapScript : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void OnMinimapBtnClick(){
+        if(flag){
+            Camera.main.cullingMask = notUIlayer;
+            flag = !flag;
+        }
+        else{
+            Camera.main.cullingMask = onUIlayer;
+            flag = !flag;
+        }
     }
 }
