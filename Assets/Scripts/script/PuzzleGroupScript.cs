@@ -45,6 +45,13 @@ public class PuzzleGroupScript : MonoBehaviour, IDragHandler,IBeginDragHandler, 
         unitListParent = GameObject.Find("UnitListGroup");
         unit_Code = UnityEngine.Random.Range(1001,1008);
         blockShapeImg.sprite = theGM.blockImg.Find(x => x.name == "B300" + (blockShapeCode+1).ToString());
+       
+    }
+    private void Update()
+    {
+        if(Input.GetMouseButton(0)){
+            print(Input.mousePosition + " " + Camera.main.ScreenToWorldPoint(Input.mousePosition));
+        }
     }
 
     public void OnBeginDrag(PointerEventData eventData){
@@ -59,6 +66,7 @@ public class PuzzleGroupScript : MonoBehaviour, IDragHandler,IBeginDragHandler, 
             Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y,0f);
             Vector3 objectPos = Camera.main.ScreenToWorldPoint(mousePos);
             transform.position = new Vector3(objectPos.x, objectPos.y, 0f);
+            print(mousePos+ " " + objectPos);
         }
     }
     public void OnEndDrag(PointerEventData eventData2){
