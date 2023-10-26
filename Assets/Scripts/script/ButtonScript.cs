@@ -8,11 +8,15 @@ public class ButtonScript : MonoBehaviour
     [Header("OnMinimapClick Obj")]
     public GameObject mainVirCam;
     public GameObject gameVirCam;
-    public GameObject UIObj;
+    public GameObject MainUIObj;
+    public GameObject GameUIObj;
     public void OnMinimapClick(){
         mainVirCam.SetActive(!mainVirCam.activeSelf);
         gameVirCam.SetActive(!gameVirCam.activeSelf);
-        UIObj.GetComponent<Animator>().SetBool("UIChangeTrigger",
-        !UIObj.GetComponent<Animator>().GetBool("UIChangeTrigger"));
+        MainUIObj.GetComponent<Animator>().SetBool("UIChangeTrigger",
+        !MainUIObj.GetComponent<Animator>().GetBool("UIChangeTrigger"));
+
+        GameUIObj.GetComponent<Animator>().SetBool("UIChangeTrigger",
+        !GameUIObj.GetComponent<Animator>().GetBool("UIChangeTrigger"));
     }
 }
