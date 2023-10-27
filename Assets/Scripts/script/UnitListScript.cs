@@ -42,6 +42,7 @@ public class UnitListScript : MonoBehaviour
         }
         time += Time.deltaTime;
         if(time > unit.unit_SpawnTime){
+            //타이머에 따라 유닛 생성
             Instantiate(unitPrefab, UnitSpawnPotal.transform.position, Quaternion.identity,UnitSpawnPotal.transform);
             time = 0f;
         }

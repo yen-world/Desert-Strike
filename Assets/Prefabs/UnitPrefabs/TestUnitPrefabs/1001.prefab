@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8480721103046173721}
   - component: {fileID: 8480721103046173722}
   m_Layer: 0
-  m_Name: Unit1
+  m_Name: 1001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -127,6 +127,6 @@ MonoBehaviour:
     unit_MP: 0
     unit_Atk: 0
     unit_Def: 0
-    unit_ListTime: 0
-    unit_SpawnTime: 0
+    unit_ListTime: 3
+    unit_SpawnTime: 2
   speed: 3

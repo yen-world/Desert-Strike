@@ -66,7 +66,6 @@ public class PuzzleGroupScript : MonoBehaviour, IDragHandler,IBeginDragHandler, 
             Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y,0f);
             Vector3 objectPos = Camera.main.ScreenToWorldPoint(mousePos);
             transform.position = new Vector3(objectPos.x, objectPos.y, 0f);
-            print(mousePos+ " " + objectPos);
         }
     }
     public void OnEndDrag(PointerEventData eventData2){
