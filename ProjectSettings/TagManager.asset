@@ -45,9 +45,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Back
+    uniqueID: 3059583943
+    locked: 0
   - name: UI
     uniqueID: 339433477
     locked: 0
   - name: Puzzle
     uniqueID: 1559569383
+    locked: 0
+  - name: Potal
+    uniqueID: 512781855
+    locked: 0
+  - name: Unit
+    uniqueID: 1984661047
     locked: 0

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 /* 데이터 조회 명령어
     using Select.Linq;
@@ -9,9 +10,11 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("Objects")]
     public GameObject puzzlePlacementGroup;
     public GameObject UnitListGroup;
 
+    [Header("Lists")]
     public List<GameObject> shapeList = new List<GameObject>();
 
     public List<GameObject> unitPrefabs = new List<GameObject>();
