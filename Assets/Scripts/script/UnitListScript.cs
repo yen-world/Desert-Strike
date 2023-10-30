@@ -5,20 +5,20 @@ using UnityEngine.UI;
 using System.Linq;
 public class UnitListScript : MonoBehaviour
 {
-    [SerializeField] Slider unitTimer;
-    [SerializeField] bool myCoroutineRunning;
+    public Slider unitTimer;
+    [SerializeField] bool listFlag = true;//리스트가 현재 생성되어 있는지 검사하는 flag
     public GameObject parentObj; //puzzle Group
     public List<GameObject> gridGroup;
     [SerializeField] GameObject UnitSpawnPotal;
     [SerializeField] GameObject unitPrefab;
     GameManager theGM;
-    Unit unit;
+    public Unit unit;
 
     float time = 0f;
+    float listTime;
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(UnitTimer());
         theGM = FindObjectOfType<GameManager>();
         gridGroup = parentObj.GetComponent<PuzzleGroupScript>().gridGroup;
         UnitSpawnPotal = GameObject.Find("UnitSpawnPotal");
@@ -27,35 +27,27 @@ public class UnitListScript : MonoBehaviour
         .Find(x => x.name == parentObj.GetComponent<PuzzleGroupScript>().unit_Code.ToString());
         unit = unitPrefab.GetComponent<UnitManager>().unit;
         unitTimer.maxValue = unit.unit_ListTime;
-        unitTimer.value = unitTimer.maxValue;
+        listTime = unit.unit_ListTime;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(!myCoroutineRunning){
+        time += Time.deltaTime;
+        listTime -= Time.deltaTime;
+        unitTimer.value = listTime;
+        if(time > unit.unit_SpawnTime){
+            //타이머에 따라 유닛 생성
+            Instantiate(unitPrefab, UnitSpawnPotal.transform.position, Quaternion.identity,UnitSpawnPotal.transform);
+            time = 0f;
+        }
+
+        if(listTime < 0){
             for(int i = 0; i < gridGroup.Count; i++) {
                 gridGroup[i].gameObject.tag = "Grid";   
             }
             Destroy(parentObj);
             Destroy(this.gameObject);
         }
-        time += Time.deltaTime;
-        if(time > unit.unit_SpawnTime){
-            //타이머에 따라 유닛 생성
-            Instantiate(unitPrefab, UnitSpawnPotal.transform.position, Quaternion.identity,UnitSpawnPotal.transform);
-            time = 0f;
-        }
-        
-    }
-
-    IEnumerator UnitTimer(){
-        myCoroutineRunning = true;
-        for(float i = unitTimer.value;i > 0;i = i - 0.01f){
-            unitTimer.value = i;
-            
-            yield return new WaitForSeconds(0.1f);
-        }
-        myCoroutineRunning = false;
     }
 }

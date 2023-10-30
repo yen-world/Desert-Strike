@@ -49,9 +49,7 @@ public class PuzzleGroupScript : MonoBehaviour, IDragHandler,IBeginDragHandler, 
     }
     private void Update()
     {
-        if(Input.GetMouseButton(0)){
-            print(Input.mousePosition + " " + Camera.main.ScreenToWorldPoint(Input.mousePosition));
-        }
+        
     }
 
     public void OnBeginDrag(PointerEventData eventData){
@@ -83,8 +81,9 @@ public class PuzzleGroupScript : MonoBehaviour, IDragHandler,IBeginDragHandler, 
                 //유닛 리스트에 추가하는 함수 
                 var unitlist = Instantiate(unitListPrefab, unitListParent.transform.position, 
                 Quaternion.identity, unitListParent.transform);
-                unitlist.GetComponent<UnitListScript>().parentObj = this.gameObject;
+                unitlist.GetComponent<UnitListScript>().parentObj = this.gameObject; 
                 thisParent.GetComponent<SpawnerScript>().spawnTimerFlag = true;
+
 
                 //유닛 리스트에 추가된 프리팹의 유닛 설정 (이건 게임메니저에서 불러오는게 나을듯...)
             }

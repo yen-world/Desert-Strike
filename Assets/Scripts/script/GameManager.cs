@@ -25,9 +25,5 @@ public class GameManager : MonoBehaviour
         
         return shapeList[_code];
     }
-    private void Start() {
-        for(int i = 0; i < unitPrefabs.Count; i++) {
-            print(unitPrefabs[i].name);
-        }
-    }
+    
 }
